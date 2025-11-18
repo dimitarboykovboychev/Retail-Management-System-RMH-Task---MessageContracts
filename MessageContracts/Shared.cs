@@ -1,17 +1,17 @@
 ﻿namespace MessageContracts
 {
-    public record ProductCreated(Guid StoreID, Product Product);
+    public record ProductCreated(ProductDTO Product);
+    public record ProductDeleted(Guid StoreID, Guid ProductID);
 
-    public record ProductDeleted(Guid StoreID, Guid ProductId);
 
+    public record CreateProduct(ProductDTO Product);
+    public record DeleteProduct(Guid StoreID, Guid ProductID);
 
-    public record CreateProduct(ProductExtended ProductExtended);
-
-    public record DeleteProduct(Guid StoreID, Guid ProductId);
-
-    public class Product
+    public class ProductDTO
     {
-        public Guid ProductId { get; set; }
+        public Guid StoreID { get; set; }
+
+        public Guid ProductID { get; set; }
 
         public string Name { get; set; }
 
@@ -24,10 +24,5 @@
         public DateTime CreatedOn { get; set; }
 
         public DateTime UpdatedOn { get; set; }
-    }
-
-    public class ProductExtended: Product
-    {
-        public Guid StoreId { get; set; }
     }
 }
